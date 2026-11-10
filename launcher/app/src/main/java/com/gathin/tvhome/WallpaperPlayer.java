@@ -52,6 +52,8 @@ final class WallpaperPlayer {
     private boolean closed;
     private boolean loading;
     private String displayed = "";
+    /** The displayed file's size and date when it was read, so a picture replaced on disk is noticed (start). */
+    private String displayedStamp = "";
     /** wallpaper_captions: the shown picture's name from wallpapers/captions.txt; null when off or there are none. */
     private final TextView caption;
     private final Map<String, String> names;
@@ -115,6 +117,7 @@ final class WallpaperPlayer {
                 // The picture covers the whole screen: the root's plain colour under it is overdraw.
                 root.setBackground(null);
                 displayed = first.getName();
+                displayedStamp = stamp(displayed);
                 showCaption(false);
                 if (!displayed.equals(previous)) {
                     preferences.edit().putString("image", displayed)
@@ -130,7 +133,18 @@ final class WallpaperPlayer {
 
     void start() {
         active = true;
+        // A picture replaced on disk under the same name while Home was hidden (wallpaper.jpg written again through
+        // ThemeProvider) is read again. Checked only here, as Home comes forward: never while it is on screen.
+        if (!displayed.isEmpty() && !stamp(displayed).equals(displayedStamp)) displayed = "";
         update();
+    }
+
+    /** Size and modification time of the collection's file with this name; "" when it is not in the collection. */
+    private String stamp(String name) {
+        for (File file : files) {
+            if (file.getName().equals(name)) return file.length() + "@" + file.lastModified();
+        }
+        return "";
     }
 
     void stop() {
@@ -194,6 +208,7 @@ final class WallpaperPlayer {
                 }
                 show(bitmap);
                 displayed = next.getName();
+                displayedStamp = stamp(displayed);
                 showCaption(true);
                 if (!displayed.equals(previous) || changed == 0) {
                     preferences.edit().putString("image", displayed)

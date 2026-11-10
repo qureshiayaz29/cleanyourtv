@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The TV banner: a sun rising behind two hills. Drawn for this add-on, no third-party art. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="180dp"
+    android:viewportWidth="320" android:viewportHeight="180">
+    <path android:fillColor="#FF10243F" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#FFFFC457" android:pathData="M160,104m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0" />
+    <path android:fillColor="#FF2F7FD1" android:pathData="M0,180V128L92,82L190,180Z" />
+    <path android:fillColor="#FF1D5C9E" android:pathData="M120,180L236,96L320,150V180Z" />
+</vector>

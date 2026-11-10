@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daily Wallpaper</string>
+    <string name="intro">Bing\'s picture of the day as Home\'s wallpaper. It is downloaded in the background once a day and shown when Home next starts.</string>
+    <string name="update_now">Update now</string>
+    <string name="updating">Updating…</string>
+    <string name="dim">Darken the picture: %1$d%%</string>
+    <string name="daily_on">Daily update: On</string>
+    <string name="daily_off">Daily update: Off</string>
+    <string name="status_never">No picture downloaded yet.</string>
+    <string name="status_updated">Picture updated %1$s.</string>
+    <string name="status_current">Up to date. Last new picture %1$s.</string>
+    <string name="status_no_network">Could not reach www.bing.com. It will try again later.</string>
+    <string name="status_no_permission">Not allowed to set the wallpaper yet. Run install.sh, or over ADB: pm grant com.ayazqureshi.dailywallpaper android.permission.WRITE_SECURE_SETTINGS</string>
+    <string name="status_no_launcher">The Clean Your TV launcher (com.gathin.tvhome) is not installed, so there is no wallpaper to set.</string>
+    <string name="status_failed">The picture could not be read. It will try again later.</string>
+</resources>
